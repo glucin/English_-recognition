@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>英文手写体识别系统</h1>
+	
+	<input type="file" name="pic[]" multiple id="myinput">
+	<button onclick="uploadFile()">上传</button>
+  	<button onclick="showUname()">显示</button>
+
+	<script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+	<script>
+		function uploadFile(){
+			var fd = new FormData();
+
+			fd.append("pic", document.getElementById("myinput").files[0]);
+			
+			$.ajax({
+				url:"upload.php",
+				type:"post",
+				data:fd,
+				processData:false,
+				contentType:false,
+				success:function(res){
+					console.log(res);
+				},
+				dataType:"json"
+			})
+		}
+      function showUname(){
+			window.location.href="http://www.baidu.com" 
+        }
+
+	</script>
+</body>	
+</html>
